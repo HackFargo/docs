@@ -1,56 +1,67 @@
-# HackFargo API Docs
+# HackFargo API Documentation
 
-## Notes
-- All calls return a maximum of 10,000 records
+[HackFargo](http://hackfargo.co) collects data form the City of Fargo and makes it accessible via a simple HTTP call.
 
-## Basic API Usage
-- Make requests to our API serving URL at `http://api.hackfagro.co/calls`
-
-
-### Dispatch Data
-HackFargo makes Dispatch Log data made available by the City of Fargo accessible via a simple HTTP call.
+Currently Available Datasets:
+- Dispatch Data
 
 
-#### Structure
-Criteria                    | Parameters                                     
----------------------------:|:----------
-Last few days(15 by default)| `/calls`                                       
-A data range                | `/calls?start=6-20-2013&end=6-21-2013`         
-An incident Type            | `/calls/type/Party`                            
-Date Range & Incident Type  | `/calls/type/Party?start=3-3-2014&end=3-4-2014`
+## Dispatch Data
+
+### Instructions
+Think of a data set that interests you and form a keyword to filter that data
+upon. In order to receive a list of incidents filtered by your keyword, you
+would need to make an HTTP `GET` request that will consist of our API endpoint
+URL `http://api.hackfargo.co` and your keyword formatted in parameters appended
+to the above URL like such `http://api.hackfargo.co/calls/type/Party`
 
 
-Notes:
+### Structure
+Criteria                        | Parameters                                     
+-------------------------------:|:------------------------------------------------
+Last few days (15 by default)   | `/calls`                                       
+Data range                      | `/calls?start=6-20-2013&end=6-21-2013`         
+Incident Type                   | `/calls/type/Party`                            
+Date Range + Incident Type      | `/calls/type/Party?start=3-3-2014&end=3-4-2014`
+
+
+### Notes
+- Filter according to your need. (The maximum amount of records returned in a call is currently capped at 10,000)
+- Requests should be made via HTTP `GET` requests.
+- Responses will be valid JSON data.
 - The `date` attribute is returned in the [UNIX timestamp](http://www.epochconverter.com) format.
-- Addresses are only accurate to block level . Example of returned address -
-`314 Broadway becomes 300 Broadway.`
+- For privacy and accuracy limitations, addresses are only accurate to the block level. Example 
+`314 Broadway` would show up as `300 Broadway`.
 
-##### Example
-Description:
-Get noise related incidents filtered by the keyword `loud` for the date range
-_2-30-2014_ to _3-30-2014_
+#### Example
+<dl>
+<dt>Description</dt>
+<dd>Get noise related incidents filtered by the keyword `loud` for the date
+range _2-30-2014_ to _3-30-2014_</dd>
 
 
-Request URL:
-    http://api.hackfargo.co/calls/type/loud/count?start=2-30-2014&end=3-30-2014
+<dt>Request</dt>
+<dd>`http://api.hackfargo.co/calls/type/loud/count?start=2-30-2014&end=3-30-2014`</dd>
 
-Response:
+<dt>Response</dt>
+<dd>
 _Note that the following response is annotated with comments beginning
 with `//` to indicate what those parts mean. Since the JSON format doesn't have
 comments it should be considered as invalid._
+
 ```JSON
 [
   {
     "DataSetID": "DispatchLogs",
     "Lat": 46.81618741541262,
     "Long": -96.88359341719978,
-    "Date": 1394258006,                             // Unix timestamp
-    "Description": "LOUD PEOPLE/MARIJUANA ODOR",    // Field to filter against. Supplied by you/user
+    "Date": 1394258006,                             //_Unix_timestamp_format
+    "Description": "LOUD PEOPLE/MARIJUANA ODOR",    //_User's_field_to_filter_against
     "Meta": {
       "id": 215986,
       "DateString": "3/7/2014 11:53:26 PM",
       "DateVal": 1394258006,
-      "Address": "900 BLK 44 ST S",                 // Addresses are only accurate to block level
+      "Address": "900 BLK 44 ST S",                 //_Addresses_are_only_accurate_to_block_level
       "NatureOfCall": "LOUD PEOPLE/MARIJUANA ODOR",
       "CallType": "Loud Party/People",
       "IncidentNumber": "",
@@ -100,31 +111,36 @@ comments it should be considered as invalid._
   }
 ]
 ```
+</dd>
+</dl>
 
 
-#### Counts
+### Counts
 If you just need the number of incidents, you may add `/count` towards the end
 of your request path. You will receive the number of incidents instead of the
-speceif incidents themselves. 
+specific incidents themselves. 
 
-##### Example
+#### Example
+<dl>
+<dt>Description</dt>
+<dd> Get count of noise related incidents filtered by the keyword `loud` for
+the date range _6-20-12_ to _6-21-2013_</dd>
 
-Description:
-Get count of noise related incidents filtered by the keyword `loud` for the date range
-_6-20-12_ to _6-21-2013_
+<dt>Request URL<dt>
+<dd>`http://api.hackfargo.co/calls/type/loud/count?start=6-20-2012&end=6-21-2013`</dd>
 
-Request URL:
-    http://api.hackfargo.co/calls/type/loud/count?start=6-20-2012&end=6-21-2013
-
-Response:
+<dt>Response<dt>
+<dd>
 ```JSON
 {
       "count": 1649
 }
 ```
+</dd>
+</dl>
 
-### Liability
 
+## Liability
 The dispatch data provided via API by HackFargo is a service that repurposes
 data made available for public usage by the City of Fargo who deserve all
 credit for collection and assimilation of said data. The following is a
@@ -135,4 +151,3 @@ available in the public interest. The log does not represent all of the daily
 activity of the department, nor does they always reflect what the officer found
 at the scene of the call. These calls also do not reflect the self-initiated or
 investigative activities of department officers._
-
