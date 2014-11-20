@@ -11,9 +11,9 @@ Currently Available Datasets:
 ### Instructions
 Think of a data set that interests you and form a keyword to filter that data
 upon. In order to receive a list of incidents filtered by your keyword, you
-would need to make a HTTP `GET` request to a path that is formed by joining our
-API endpoint URL `http://api.hackfargo.co` and your keyword properly formatted
-within the strcuture noted in the section below; like such
+would need to make a HTTP `GET` request to a path formed by joining our
+API endpoint URL `http://api.hackfargo.co` and your keyword (formatted
+within the strcuture noted in the section below); like such
 `http://api.hackfargo.co/calls/type/Party`
 
 
@@ -35,15 +35,15 @@ Date Range + Incident Type      | `/calls/type/Party?start=3-3-2014&end=3-4-2014
 `314 Broadway` would show up as `300 Broadway`.
 
 #### Example
-__Description__    
+**Description**    
 Get noise related incidents filtered by the keyword `loud` for the date
 range _2-30-2014_ to _3-30-2014_.
 
 
-__Requesi__   
+**Request URL**   
     http://api.hackfargo.co/calls/type/loud/count?start=2-30-2014&end=3-30-2014
 
-__Response__    
+**Response**    
 _Note that the following response is annotated with comments beginning
 with `//` to indicate what those parts mean. Since the JSON format doesn't have
 comments it should be considered as invalid._
@@ -118,14 +118,14 @@ of your request path. You will receive the number of incidents instead of the
 specific incidents themselves. 
 
 #### Example
-__Description__    
+**Description**    
 Get count of noise related incidents filtered by the keyword `loud` for
 the date range _6-20-12_ to _6-21-2013_.
 
-__Request URL__    
+**Request URL**    
     `http://api.hackfargo.co/calls/type/loud/count?start=6-20-2012&end=6-21-2013`
 
-__Response__    
+**Response**    
 ```JSON
 {
       "count": 1649
