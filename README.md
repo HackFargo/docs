@@ -35,15 +35,15 @@ Date Range + Incident Type      | `/calls/type/Party?start=3-3-2014&end=3-4-2014
 `314 Broadway` would show up as `300 Broadway`.
 
 #### Example
-*Description*    
+__Description__    
 Get noise related incidents filtered by the keyword `loud` for the date
 range _2-30-2014_ to _3-30-2014_.
 
 
-*Request*    
+__Requesi__   
     http://api.hackfargo.co/calls/type/loud/count?start=2-30-2014&end=3-30-2014
 
-*Response*    
+__Response__    
 _Note that the following response is annotated with comments beginning
 with `//` to indicate what those parts mean. Since the JSON format doesn't have
 comments it should be considered as invalid._
@@ -118,14 +118,14 @@ of your request path. You will receive the number of incidents instead of the
 specific incidents themselves. 
 
 #### Example
-*Description*    
+__Description__    
 Get count of noise related incidents filtered by the keyword `loud` for
 the date range _6-20-12_ to _6-21-2013_.
 
-*Request URL*    
+__Request URL__    
     `http://api.hackfargo.co/calls/type/loud/count?start=6-20-2012&end=6-21-2013`
 
-*Response*    
+__Response__    
 ```JSON
 {
       "count": 1649
