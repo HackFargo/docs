@@ -11,9 +11,10 @@ Currently Available Datasets:
 ### Instructions
 Think of a data set that interests you and form a keyword to filter that data
 upon. In order to receive a list of incidents filtered by your keyword, you
-would need to make an HTTP `GET` request that will consist of our API endpoint
-URL `http://api.hackfargo.co` and your keyword formatted in parameters appended
-to the above URL like such `http://api.hackfargo.co/calls/type/Party`
+would need to make a HTTP `GET` request to a path that is formed by joining our
+API endpoint URL `http://api.hackfargo.co` and your keyword properly formatted
+within the strcuture noted in the section below; like such
+`http://api.hackfargo.co/calls/type/Party`
 
 
 ### Structure
@@ -34,17 +35,15 @@ Date Range + Incident Type      | `/calls/type/Party?start=3-3-2014&end=3-4-2014
 `314 Broadway` would show up as `300 Broadway`.
 
 #### Example
-<dl>
-<dt>Description</dt>
-<dd>Get noise related incidents filtered by the keyword `loud` for the date
-range _2-30-2014_ to _3-30-2014_</dd>
+*Description*    
+Get noise related incidents filtered by the keyword `loud` for the date
+range _2-30-2014_ to _3-30-2014_.
 
 
-<dt>Request</dt>
-<dd>`http://api.hackfargo.co/calls/type/loud/count?start=2-30-2014&end=3-30-2014`</dd>
+*Request*    
+    http://api.hackfargo.co/calls/type/loud/count?start=2-30-2014&end=3-30-2014
 
-<dt>Response</dt>
-<dd>
+*Response*    
 _Note that the following response is annotated with comments beginning
 with `//` to indicate what those parts mean. Since the JSON format doesn't have
 comments it should be considered as invalid._
@@ -111,8 +110,6 @@ comments it should be considered as invalid._
   }
 ]
 ```
-</dd>
-</dl>
 
 
 ### Counts
@@ -121,23 +118,19 @@ of your request path. You will receive the number of incidents instead of the
 specific incidents themselves. 
 
 #### Example
-<dl>
-<dt>Description</dt>
-<dd> Get count of noise related incidents filtered by the keyword `loud` for
-the date range _6-20-12_ to _6-21-2013_</dd>
+*Description*    
+Get count of noise related incidents filtered by the keyword `loud` for
+the date range _6-20-12_ to _6-21-2013_.
 
-<dt>Request URL<dt>
-<dd>`http://api.hackfargo.co/calls/type/loud/count?start=6-20-2012&end=6-21-2013`</dd>
+*Request URL*    
+    `http://api.hackfargo.co/calls/type/loud/count?start=6-20-2012&end=6-21-2013`
 
-<dt>Response<dt>
-<dd>
+*Response*    
 ```JSON
 {
       "count": 1649
 }
 ```
-</dd>
-</dl>
 
 
 ## Liability
