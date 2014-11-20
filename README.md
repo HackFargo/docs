@@ -41,7 +41,7 @@ range _2-30-2014_ to _3-30-2014_.
 
 
 **Request URL**   
-    http://api.hackfargo.co/calls/type/loud/count?start=2-30-2014&end=3-30-2014
+`http://api.hackfargo.co/calls/type/loud/count?start=2-30-2014&end=3-30-2014`
 
 **Response**    
 _Note that the following response is annotated with comments beginning
@@ -123,7 +123,7 @@ Get count of noise related incidents filtered by the keyword `loud` for
 the date range _6-20-12_ to _6-21-2013_.
 
 **Request URL**    
-    `http://api.hackfargo.co/calls/type/loud/count?start=6-20-2012&end=6-21-2013`
+`http://api.hackfargo.co/calls/type/loud/count?start=6-20-2012&end=6-21-2013`
 
 **Response**    
 ```JSON
